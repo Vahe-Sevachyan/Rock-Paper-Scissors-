@@ -13,11 +13,10 @@ const getComputerChoice = () => {
 
 // getComputerChoice();
 
-const playRound = () => {
-  //* code to UpperCase first letter of string .charAt(0).toUpperCase() + playerSelection.slice(1)
+const playRound = (playerSelection, getComputerChoice) => {
+  // code to UpperCase first letter of string .charAt(0).toUpperCase() + playerSelection.slice(1)
   let computer = getComputerChoice();
-  console.log(computer);
-  console.log(playerSelection);
+  console.log(computer, playerSelection);
   if (playerSelection === computer) {
     console.log("Tie Game!");
   }
@@ -37,9 +36,14 @@ const playRound = () => {
     return "You Win!";
   }
 };
+console.log(playRound(playerSelection, getComputerChoice));
 
-playRound(playerSelection, getComputerChoice());
-
+const game = () => {
+  for (let i = 0; i < 5; i++) {}
+};
 // for (let i= 0; i<5; i++){
 
+// }
+// while (computerScore < 5 || playerScore < 5) {
+//   playRound(playerSelection, getComputerChoice());
 // }

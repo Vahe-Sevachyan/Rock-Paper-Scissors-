@@ -1,9 +1,14 @@
-let playerSelection = prompt("Rock, Paper or Scissor").toLowerCase();
-let roundScore = 0;
+let gameWinner = 5;
 let playerScore = 0;
 let computerScore = 0;
+let tieGame = 0;
 
-// //* This function generates a random choice for the computer
+const playerChoice = () => {
+  let playerSelection = prompt("Rock, Paper or Scissor").toLowerCase();
+  return playerSelection;
+};
+
+// //* getComputerChoice() generates a random choice for the computer
 const getComputerChoice = () => {
   let compChoices = ["rock", "paper", "scissor"];
   let computerSelection =
@@ -11,39 +16,40 @@ const getComputerChoice = () => {
   return computerSelection;
 };
 
-// getComputerChoice();
-
-const playRound = (playerSelection, getComputerChoice) => {
+const playRound = () => {
   // code to UpperCase first letter of string .charAt(0).toUpperCase() + playerSelection.slice(1)
   let computer = getComputerChoice();
-  console.log(computer, playerSelection);
-  if (playerSelection === computer) {
-    console.log("Tie Game!");
-  }
-  if (
-    (playerSelection === "rock" && computer === "paper") ||
-    (playerSelection === "paper" && computer === "scissor") ||
-    (playerSelection === "scissor" && computer === "rock")
-  ) {
-    computerScore++;
-    return "You lose!";
+  let player = playerChoice();
+
+  if (player === computer) {
+    return tieGame++;
   } else if (
-    (computer === "rock" && playerSelection === "paper") ||
-    (computer === "paper" && playerSelection === "scissor") ||
-    (computer === "scissor" && playerSelection === "rock")
+    (player === "rock" && computer === "paper") ||
+    (player === "paper" && computer === "scissor") ||
+    (player === "scissor" && computer === "rock")
   ) {
-    playerScore++;
-    return "You Win!";
-  }
+    return computerScore++;
+  } else
+    (computer === "rock" && player === "paper") ||
+      (computer === "paper" && player === "scissor") ||
+      (computer === "scissor" && player === "rock");
+  return playerScore++;
 };
-console.log(playRound(playerSelection, getComputerChoice));
-
 const game = () => {
-  for (let i = 0; i < 5; i++) {}
+  for (let i = 0; i < 5; i++) {
+    playRound();
+  }
+  console.log(`Player Score : ${playerScore}`);
+  console.log(`Computer Score: ${computerScore}`);
+  console.log(`Tie Game:${tieGame}`);
 };
-// for (let i= 0; i<5; i++){
-
-// }
-// while (computerScore < 5 || playerScore < 5) {
-//   playRound(playerSelection, getComputerChoice());
-// }
+game();
+// const game = () => {
+//   while (gameWinner > playerScore || computerScore) {
+//     playRound();
+//     if (playerScore === 5) {
+//       console.log("You Win!");
+//     } else computerScore === 5;
+//     console.log("Computer Wins!");
+//   }
+// };
